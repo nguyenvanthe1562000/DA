@@ -113,7 +113,7 @@ namespace QLBanDoGiaDung_API
             //  };
             //});
 
-         
+
 
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
 
@@ -131,10 +131,22 @@ namespace QLBanDoGiaDung_API
             services.AddTransient<INguoiDungRepository, NguoiDungRepository>();
             services.AddTransient<IDiaChiBussiness, DiaChiBussiness>();
             services.AddTransient<IDiaChiRepository, DiaChiRepository>();
-  services.AddTransient<ITinTucRepository, TinTucRepository>();
-  services.AddTransient<ITinTucService , TinTucService >();
-   services.AddTransient<IThongKeBussiness  , ThongKeBussiness  >();
-    services.AddTransient<IThongKeRepository  , ThongKeRepository  >();
+            services.AddTransient<ITinTucRepository, TinTucRepository>();
+            services.AddTransient<ITinTucService, TinTucService>();
+            services.AddTransient<IThongKeBussiness, ThongKeBussiness>();
+            services.AddTransient<IThongKeRepository, ThongKeRepository>();
+            ///
+            services.AddTransient<IAccDocService, AccDocService>();
+            services.AddTransient<IAccDocRepository, AccDocRepository>();
+            services.AddTransient<IPermisionService, PermisionService>();
+            services.AddTransient<IPermisionRepository, PermisionRepository>();
+
+            services.AddTransient<IPermisionDetailService, PermisionDetailService>();
+            services.AddTransient<IPermisionDetailRepository, PermisionDetailRepository>();
+
+
+            services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<IFunctionRepository, FunctionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -154,9 +166,9 @@ namespace QLBanDoGiaDung_API
             app.UseAuthentication();
             app.UseHttpsRedirection();
 
-       app.UseStaticFiles();
+            app.UseStaticFiles();
 
-                app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

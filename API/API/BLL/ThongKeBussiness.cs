@@ -1,4 +1,4 @@
-﻿using DAL;
+using DAL;
 using Microsoft.IdentityModel.Tokens;
 using Model;
 using System;
@@ -22,26 +22,38 @@ namespace BLL
             Secret = configuration["AppSettings:Secret"];
             _res = res;
         }
-        public List<ThongKeModel> GetSanPhamBanChay()
+        public List<ChiTietDonHangModel> GetSanPhamBanChay(int pageIndex, int pageSize,out long total, string tenSanPham)
         {
-            return _res.GetSanPhamBanChay();
+            return _res.GetSanPhamBanChay(pageIndex, pageSize,out total, tenSanPham);
         }
 
-        public string GetSoLuongSanPham()
-        {
-            return _res.GetSoLuongSanPham();
-        }
-        public string GetSoLuongLoaiSP()
-        {
-            return _res.GetSoLuongLoaiSP();
-        }
-        public string GetSoLuongHoaDon()
-        {
-            return _res.GetSoLuongHoaDon();
-        }
-        public string GetSoLuongNguoiDung()
-        {
-            return _res.GetSoLuongNguoiDung();
-        }
+    public string GetSoLuongSanPham()
+    {
+      return _res.GetSoLuongSanPham();
     }
+    public string GetSoLuongLoaiSP()
+    {
+      return _res.GetSoLuongLoaiSP();
+    }
+    public string GetSoLuongNhomSP()
+    {
+      return _res.GetSoLuongNhomSP();
+    }
+    public string GetSoLuongHangSP()
+    {
+      return _res.GetSoLuongHangSP();
+    }
+    public string GetSoLuongDonHang()
+    {
+      return _res.GetSoLuongDonHang();
+    }
+    public string GetSoLuongNguoiDung()
+    {
+      return _res.GetSoLuongNguoiDung();
+    }
+    public string GetSoLuongTinTuc()
+    {
+      return _res.GetSoLuongTinTuc();
+    }
+  }
 }

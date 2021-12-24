@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -205,5 +206,30 @@ namespace DAL
 
             return table;
         }
+
+
+        public static async Task<IList<T>> ConvertToAsync<T>(this DataTable table)
+        {
+
+            var task = Task.Run(() =>
+             {
+                 if (table == null)
+                 {
+                     return null;
+                 }
+
+                 var rows = new List<DataRow>();
+
+                 foreach (DataRow row in table.Rows)
+                 {
+                     rows.Add(row);
+                 }
+
+                 return ConvertTo<T>(rows);
+             });
+            return await task;
+            
+        }
+       
     }
 }

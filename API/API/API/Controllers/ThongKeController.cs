@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace QLBanDoGiaDung_API.Controllers
 {
-    // [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ThongKeController : ControllerBase
@@ -28,41 +28,75 @@ namespace QLBanDoGiaDung_API.Controllers
         }
 
         // GET: api/<ThongKeController>
-       
-        [Route("get-sanpham-banchay")]
-        [HttpGet]
-        public IEnumerable<ThongKeModel> GetSanPhamBanChay()
-        {
-            return _spBusiness.GetSanPhamBanChay();
-        }
 
-        [Route("get-soluong-sanpham")]
+        [Route("get-sanpham-banchay")]
+        [HttpPost]
+        public ResponseModel GetSanPhamBanChay([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string tenSanPham = "";
+                if (formData.Keys.Contains("tenSanPham") && !string.IsNullOrEmpty(Convert.ToString(formData["tenSanPham"]))) { tenSanPham = Convert.ToString(formData["tenSanPham"]); }
+                long total = 0;
+                var data = _spBusiness.GetSanPhamBanChay(page, pageSize, out total, tenSanPham);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
+        [Route("get-SLSP")]
         [HttpGet]
         public string GetSoLuongSanPham()
         {
             return _spBusiness.GetSoLuongSanPham();
         }
 
-        [Route("get-soluong-loaisanpham")]
+        [Route("get-SLLSP")]
         [HttpGet]
         public string GetSoLuongLoaiSP()
         {
             return _spBusiness.GetSoLuongLoaiSP();
         }
-
-        [Route("get-soluong-hoadon")]
+        [Route("get-SLNSP")]
         [HttpGet]
-        public string GetSoLuongHoaDon()
+        public string GetSoLuongNhomSP()
         {
-            return _spBusiness.GetSoLuongHoaDon();
+            return _spBusiness.GetSoLuongNhomSP();
+        }
+        [Route("get-SLHSP")]
+        [HttpGet]
+        public string GetSoLuongHangSP()
+        {
+            return _spBusiness.GetSoLuongHangSP();
         }
 
-        [Route("get-soluong-nguoidung")]
+        [Route("get-SLDH")]
+        [HttpGet]
+        public string GetSoLuongDonHang()
+        {
+            return _spBusiness.GetSoLuongDonHang();
+        }
+
+        [Route("get-SLND")]
         [HttpGet]
         public string GetSoLuongNguoiDung()
         {
             return _spBusiness.GetSoLuongNguoiDung();
         }
-
+        [Route("get-SLTT")]
+        [HttpGet]
+        public string GetSoLuongTinTuc()
+        {
+            return _spBusiness.GetSoLuongTinTuc();
+        }
     }
 }

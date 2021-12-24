@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Model.Model;
 
 namespace BLL
 {
@@ -115,7 +116,7 @@ namespace BLL
             return _res.Search(pageIndex, pageSize, out total, hoTen, taiKhoan);
         }
 
-        public List<PermisionDetail> GetRoles(string Code)
+        public List<PermisionDetailModel> GetRoles(string Code)
         {
             throw new NotImplementedException();
         }

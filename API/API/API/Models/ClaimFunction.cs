@@ -24,6 +24,7 @@ namespace ShopVT.Model
         public const string SLIDE = "EMPLOYEE";
         public const string HOMEPAGE = "HOMEPAGE";
         public const string ORDER = "HOMEPAGE";
+        public const string ACCDOC = "ACCDOC";
 
         //public const string FUNCTION = "FUNCTION";
         //public const string FUNCTION = "FUNCTION";

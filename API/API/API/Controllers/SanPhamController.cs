@@ -239,7 +239,6 @@ namespace QLBanDoGiaDung_API.Controllers
         
         [Route("create-product")]
         [HttpPost]
-        [ClaimRequirement(ClaimFunction.PRODUCT, ClaimAction.CANREAD)]
         public IActionResult CreateProduct([FromBody] SanPhamModel model)
         {
             model.MaSanPham = Guid.NewGuid().ToString();

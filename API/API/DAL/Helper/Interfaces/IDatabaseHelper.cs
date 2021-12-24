@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DAL.Helper
 {
@@ -13,6 +14,9 @@ namespace DAL.Helper
     }
     public interface IDatabaseHelper
     {
+        Task<string> ExecuteSProcedureAsync(string sprocedureName, params object[] paramObjects);
+        Task<(string message, DataTable)> ExecuteSProcedureReturnDataTableAsync(string sprocedureName, params object[] paramObjects);
+        Task<(string message, object dataResult)> ExecuteScalarSProcedureWithTransactionAsync(string sprocedureName, params object[] paramObjects);
         void SetConnectionString(string connectionString);
         /// <summary>
         /// Open Connection to PostGresDB

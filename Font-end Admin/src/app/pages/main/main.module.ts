@@ -29,6 +29,11 @@ import {CalendarModule} from 'primeng/calendar';
 import { PermisionComponent } from './permision/permision.component';
 import { PermisionDetailComponent } from './permision-detail/permision-detail.component';
 import { ProductInfomationComponent } from './product-infomation/product-infomation.component';
+import { OpenInventoryComponent } from './open-inventory/open-inventory.component';
+import { AccDocComponent } from './acc-doc/acc-doc.component';
+import { AccDocDetailComponent } from './acc-doc-detail/acc-doc-detail.component';
+import { OpenInventoryDetailComponent } from './open-inventory-detail/open-inventory-detail.component';
+import { ManageBestSellingComponent } from './manage-best-selling/manage-best-selling.component';
 export const mainRoute: Routes = [
   {
     path: '',
@@ -100,6 +105,6 @@ export const mainRoute: Routes = [
     TableModule
   ],
   declarations: [MainComponent,    TintucComponent,
-    DashboardComponent, ManageCategoriesComponent, ManageProductsGroupComponent, ManageProductsComponent, ManageUsersComponent, ManageOrdersComponent, ManageProductBrandComponent, DateVNPipe, PermisionComponent, PermisionDetailComponent, ProductInfomationComponent]
+    DashboardComponent, ManageCategoriesComponent, ManageProductsGroupComponent, ManageProductsComponent, ManageUsersComponent, ManageOrdersComponent, ManageProductBrandComponent, DateVNPipe, PermisionComponent, PermisionDetailComponent, ProductInfomationComponent, OpenInventoryComponent, AccDocComponent, AccDocDetailComponent, OpenInventoryDetailComponent, ManageBestSellingComponent]
 })
 export class MainModule { }

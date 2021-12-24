@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace BLL
         bool Create(NguoiDungModel model);
         bool Update(NguoiDungModel model);
         bool Delete(string user_id);
-        List<PermisionDetail> GetRoles(string Code);
+        List<PermisionDetailModel> GetRoles(string Code);
         List<NguoiDungModel> Search(int pageIndex, int pageSize, out long total, string hoTen, string taiKhoan);
     }
 }

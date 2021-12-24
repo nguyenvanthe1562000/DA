@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Model;
+using Model.Model;
 using Newtonsoft.Json;
 using ShopVT.Extensions;
 using System;
@@ -37,13 +38,13 @@ public class ClaimRequirementFilter : IAuthorizationFilter
         else
         {
             var getroles = context.HttpContext.User.FindFirst(ClaimTypes.Role).Value;//get role of user của token
-            if(getroles is null)
+            if (getroles is null)
             {
-                context.Result= new ForbidResult();
+                context.Result = new ForbidResult();
                 return;
-            }    
-            var roles = JsonConvert.DeserializeObject < List<PermisionDetail>>(getroles).ToList();
-            if (roles.Exists(c => c.FunctionCode == _claim.Type))
+            }
+            var roles = JsonConvert.DeserializeObject<List<PermisionDetailModel>>(getroles).ToList();
+            if (roles.Exists(c => c.functionCode == _claim.Type))
             {
                 if (roles.Exists(c => c.CanCreate == true))
                 {
@@ -69,6 +70,6 @@ public class ClaimRequirementFilter : IAuthorizationFilter
 
             }
 
-        }    
+        }
     }
 }

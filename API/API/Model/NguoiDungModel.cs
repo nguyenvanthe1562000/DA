@@ -1,3 +1,4 @@
+using Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,6 @@ namespace Model
         public string role { get; set; }
         public string anh { get; set; }
         public string token { get; set; }
-        public List<PermisionDetail> listjson_Roles { get; set; }
+        public List<PermisionDetailModel> listjson_Roles { get; set; }
     }
 }

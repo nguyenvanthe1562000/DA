@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System;
+using Model.Model;
 
 namespace DAL
 {
@@ -163,7 +164,7 @@ namespace DAL
             }
         }
 
-        public List<PermisionDetail> GetRoles(string Code)
+        public List<PermisionDetailModel> GetRoles(string Code)
         {
             string msgError = "";
            
@@ -173,7 +174,7 @@ namespace DAL
                     "@Code", Code);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);                
-                return dt.ConvertTo<PermisionDetail>().ToList();
+                return dt.ConvertTo<PermisionDetailModel>().ToList();
             }
             catch (Exception ex)
             {
