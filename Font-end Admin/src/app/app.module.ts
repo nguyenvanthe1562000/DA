@@ -13,12 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtInterceptor } from './core/jwt.interceptor';
 import { ErrorInterceptor } from './core/error.interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-  
-  
   ],
   imports: [
     BrowserModule,

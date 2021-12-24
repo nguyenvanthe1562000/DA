@@ -43,6 +43,7 @@ export class ApiService {
   get(url: string) {
     let cloneHeader: any = {};
     cloneHeader['Content-Type'] = 'application/json';
+    cloneHeader['Authorization']=`Bearer ${ this.user.token}`;
     const headerOptions = new HttpHeaders(cloneHeader);
     return this._http
       .get(this.host + url, { headers: headerOptions })

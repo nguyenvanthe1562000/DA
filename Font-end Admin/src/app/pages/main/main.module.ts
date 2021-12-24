@@ -24,16 +24,16 @@ import {TableModule} from 'primeng/table';
 import { RoleGuard } from '../../core/auth.guard';
 import { Role } from '../../shared/models/Role';
 import { DateVNPipe } from '../../shared/pipes/DateVN.pipe';
+import {ChartModule} from 'primeng/chart';
 import { TintucComponent } from './tintuc/tintuc.component';
 import {CalendarModule} from 'primeng/calendar';
 import { PermisionComponent } from './permision/permision.component';
 import { PermisionDetailComponent } from './permision-detail/permision-detail.component';
 import { ProductInfomationComponent } from './product-infomation/product-infomation.component';
-import { OpenInventoryComponent } from './open-inventory/open-inventory.component';
+import { ManageReportComponent } from './manage-report/manage-report.component';
+import { ManageAmountComponent } from './manage-amount/manage-amount.component';
 import { AccDocComponent } from './acc-doc/acc-doc.component';
 import { AccDocDetailComponent } from './acc-doc-detail/acc-doc-detail.component';
-import { OpenInventoryDetailComponent } from './open-inventory-detail/open-inventory-detail.component';
-import { ManageBestSellingComponent } from './manage-best-selling/manage-best-selling.component';
 export const mainRoute: Routes = [
   {
     path: '',
@@ -85,6 +85,18 @@ export const mainRoute: Routes = [
         path: 'manage-product-detail',
         component: ProductInfomationComponent,
       },
+      {
+        path: 'manage-best-selling',
+        component: ManageReportComponent,
+      },
+      {
+        path: 'manage-amount',
+        component: ManageAmountComponent,
+      },
+      {
+        path: 'manage-permision',
+        component: PermisionComponent,
+      },
     ]
   }
 ]
@@ -102,9 +114,10 @@ export const mainRoute: Routes = [
     ButtonModule,
     DropdownModule,
     PanelModule,
-    TableModule
+    TableModule,
+    ChartModule
   ],
   declarations: [MainComponent,    TintucComponent,
-    DashboardComponent, ManageCategoriesComponent, ManageProductsGroupComponent, ManageProductsComponent, ManageUsersComponent, ManageOrdersComponent, ManageProductBrandComponent, DateVNPipe, PermisionComponent, PermisionDetailComponent, ProductInfomationComponent, OpenInventoryComponent, AccDocComponent, AccDocDetailComponent, OpenInventoryDetailComponent, ManageBestSellingComponent]
+    DashboardComponent, ManageCategoriesComponent, ManageProductsGroupComponent, ManageProductsComponent, ManageUsersComponent, ManageOrdersComponent, ManageProductBrandComponent, DateVNPipe, PermisionComponent, PermisionDetailComponent, ProductInfomationComponent, ManageReportComponent, ManageAmountComponent, AccDocComponent, AccDocDetailComponent]
 })
 export class MainModule { }

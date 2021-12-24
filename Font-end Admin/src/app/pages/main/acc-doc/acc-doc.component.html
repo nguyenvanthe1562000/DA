@@ -1,0 +1,57 @@
+<div class="top">
+    <h2>Phiếu nhập</h2>
+    <div class="right">
+        <!-- <button class="btnX" pButton type="button" (click)="showAdd()" lable="Thêm"></button> -->
+        <p-button (click)="CreateAccDoc()" icon="pi pi-external-link" label="Thêm"></p-button>
+        
+    </div>
+</div>
+<div class="bot">
+    <p-panel header="Tìm kiếm" [style]="{'margin-top': '2px'}">
+        <form class="form-horizontal" role="form" [formGroup]="formsearch"  (ngSubmit)="search()">
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right"> Họ tên </label>
+                <div class="col-sm-11">
+                    <input formControlName="hoTen" class="form-control" type="text" placeholder="Họ tên" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right"> Tài khoản </label>
+                <div class="col-sm-11">
+                    <input formControlName="taiKhoan" class="form-control" type="text" placeholder="Tài khoản" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right"></label>
+                <div class="col-sm-11">
+                    <button (click)="search()" class="btn btn-sm btn-primary">Tìm kiếm</button>
+                </div>
+            </div>
+        </form> 
+    </p-panel>
+    <p-table selectionMode="single" [value]="AccDocs" styleClass="p-datatable-gridlines" [style]="{'margin-top': '2px', 'width': '100%'}" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>STT</th>
+                <th>ngày</th>
+                <th>nội dung</th>
+                <th>Số</th>
+                <th>Thao tác</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item  let-i="rowIndex" let-expanded="expanded">
+            <tr>
+                <td style="text-align: center;">{{i+1}}</td>
+                <td style="text-align: center;">{{item.DocDate|DateVN}}}</td>
+                <td>{{item.Description}}</td>
+                <td>{{item.stt}}</td>
+                <td  style="text-align: center;">
+            
+                    <button pButton type="button" (click)="showEdit(item.stt)" title="Sửa"  class="p-button-secondary"><i class="fas fa-edit"></i></button>
+                    <button pButton type="button" (click)="delete(item.stt)" title="Xóa"  class="p-button-danger"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    
+</div>

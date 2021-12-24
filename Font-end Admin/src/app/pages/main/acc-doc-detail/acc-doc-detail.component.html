@@ -1,0 +1,51 @@
+<div class="bot">
+    <p-panel header="Tìm kiếm" [style]="{'margin-top': '2px'}">
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right"> Ngày  </label>
+                <div class="col-sm-11">
+                    <input formControlName="hoTen" class="form-control" type="text" placeholder="Họ tên" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right"> số phiếu </label>
+                <div class="col-sm-11">
+                    <input formControlName="taiKhoan" class="form-control" type="text" placeholder="Tài khoản" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right"> nội dung </label>
+                <div class="col-sm-11">
+                    <input formControlName="taiKhoan" class="form-control" type="text" placeholder="Tài khoản" />
+                </div>
+            </div>           
+    </p-panel>
+    <p-table selectionMode="single" [value]="AccDocDetais.listjson" styleClass="p-datatable-gridlines" [style]="{'margin-top': '2px', 'width': '100%'}" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>STT</th>
+                <th>ngày</th>
+                <th>Mã sản phẩm</th>
+                <th>đơn vị tính</th>
+                <th>số lượng</th>
+                <th>đơn giá</th>
+                <th>thành tiền</th>
+                <th>Thao tác</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item  let-i="rowIndex" let-expanded="expanded">
+            <tr>
+                <td style="text-align: center;">{{i+1}}</td>
+                <td style="text-align: center;">{{item.DocDate|DateVN}}}</td>
+                <td>{{item.ProducdId}}</td>
+                <td>{{item.Unit}}</td>
+                <td>{{item.Quantity}}</td>
+                <td>{{item.UnitCost}}</td>
+                <td>{{item.Amount}}</td>
+                <td  style="text-align: center;">
+                    <button pButton type="button" (click)="delete(item.stt)" title="Xóa"  class="p-button-danger"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    
+</div>
