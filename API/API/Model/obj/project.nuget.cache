@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aAQDwfZZLGmV6Pd9ssf3tZ6py85BPHjzEPaQXbKt6F9FU+pFfYvih53Dgl5bZCcs7V4R00989lGvZJg75Zxkwg==",
+  "dgSpecHash": "e0x56fUWA24KbEHbRfgEtnBNaRhA4zCgkwMxSYKmFm/HiIjnzBYbAbR28iHCTq+HZu1dLJnAjhsEHrEGo+4w9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\source\\repos\\DA\\API\\API\\Model\\Model.csproj",
+  "projectFilePath": "D:\\VS2022\\source\\repos\\DA\\API\\API\\Model\\Model.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

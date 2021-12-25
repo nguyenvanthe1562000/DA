@@ -15,10 +15,12 @@ export class AccDocDetailComponent extends BaseComponent implements OnInit {
     super(injector);
   }
   ngOnInit(): void {
-    if (this.route.snapshot.queryParams['id']) {    
+
+    
+    if (this.route.snapshot.params.id) {  
       this.route.params.subscribe(params => {
         let id = params['id'];
-        this._api.get(`/api/AccDoc/get-by-id/${id}`).takeUntil(this.unsubscribe).subscribe(res => {
+        this._api.get(`/api/AccDoc/GetById/${id}`).takeUntil(this.unsubscribe).subscribe(res => {
           this.AccDocDetais = res;
           setTimeout(() => {
             this.loadScripts();

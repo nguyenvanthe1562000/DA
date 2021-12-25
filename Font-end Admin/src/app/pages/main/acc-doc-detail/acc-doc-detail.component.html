@@ -3,19 +3,21 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label no-padding-right"> Ngày  </label>
                 <div class="col-sm-11">
-                    <input formControlName="hoTen" class="form-control" type="text" placeholder="Họ tên" />
+                    <input formControlName="hoTen" class="form-control" type="text" value="{{AccDocDetais.docDate}}" [(ngModel)]="AccDocDetais.docDate" />
+
+                   
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-1 control-label no-padding-right"> số phiếu </label>
                 <div class="col-sm-11">
-                    <input formControlName="taiKhoan" class="form-control" type="text" placeholder="Tài khoản" />
+                    <input formControlName="taiKhoan" class="form-control" type="text" value="{{AccDocDetais.stt}}" [(ngModel)]="AccDocDetais.stt"  />
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-1 control-label no-padding-right"> nội dung </label>
                 <div class="col-sm-11">
-                    <input formControlName="taiKhoan" class="form-control" type="text" placeholder="Tài khoản" />
+                    <input formControlName="taiKhoan" class="form-control" type="text" value="{{AccDocDetais.description}}" [(ngModel)]="AccDocDetais.description" />
                 </div>
             </div>           
     </p-panel>
@@ -29,18 +31,20 @@
                 <th>số lượng</th>
                 <th>đơn giá</th>
                 <th>thành tiền</th>
+                <th>Ghi chú</th>
                 <th>Thao tác</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-item  let-i="rowIndex" let-expanded="expanded">
             <tr>
                 <td style="text-align: center;">{{i+1}}</td>
-                <td style="text-align: center;">{{item.DocDate|DateVN}}}</td>
-                <td>{{item.ProducdId}}</td>
-                <td>{{item.Unit}}</td>
-                <td>{{item.Quantity}}</td>
-                <td>{{item.UnitCost}}</td>
-                <td>{{item.Amount}}</td>
+                <td style="text-align: center;">{{item.docDate|DateVN}}</td>
+                <td>{{item.producdId}}</td>
+                <td>{{item.unit}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.unitCost}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.note}}</td>
                 <td  style="text-align: center;">
                     <button pButton type="button" (click)="delete(item.stt)" title="Xóa"  class="p-button-danger"><i class="fas fa-trash"></i></button>
                 </td>
