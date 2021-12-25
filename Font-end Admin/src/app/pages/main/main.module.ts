@@ -97,6 +97,18 @@ export const mainRoute: Routes = [
         path: 'manage-permision',
         component: PermisionComponent,
       },
+      {
+        path: 'manage-acc-doc',
+        component: AccDocComponent,
+      },
+      {
+        path: 'manage-acc-doc-detail/:id',
+        component: AccDocDetailComponent,
+      },
+      {
+        path: 'manage-acc-doc-detail',
+        component: AccDocDetailComponent,
+      },
     ]
   }
 ]

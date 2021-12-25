@@ -328,5 +328,14 @@ namespace QLBanDoGiaDung_API.Controllers
             }
             return response;
         }
+
+
+        [Route("search-name")]
+        [HttpGet]
+        public IActionResult GetName([FromQuery] string name)
+        {
+         
+            return Ok( _spBusiness.GetDataAll());
+        }
     }
 }

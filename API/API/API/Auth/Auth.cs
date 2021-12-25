@@ -29,6 +29,7 @@ public class ClaimRequirementFilter : IAuthorizationFilter
     }
     public void OnAuthorization(AuthorizationFilterContext context)
     {
+        var g2etroles = context.HttpContext.User.FindFirst(ClaimTypes.Role).Value;
 
         var userCode = context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         if (userCode.Equals("Admin"))

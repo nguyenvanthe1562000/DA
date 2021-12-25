@@ -41,7 +41,7 @@ export class AccDocComponent extends BaseComponent implements OnInit {
   }
   productsGroup: any;
   search() {
-
+debugger  ;
     this._api.get('/api/AccDoc/get-all').takeUntil(this.unsubscribe).subscribe(res => {
       this.AccDocs = res;
     });
@@ -53,11 +53,13 @@ export class AccDocComponent extends BaseComponent implements OnInit {
    
   }
   CreateAccDoc() {
-    this.router.navigate(['/main/acc-doc/edit']);
+
+
+    this.router.navigate(['manage-acc-doc-detail']);
   }
 
   showEdit(id: any) {
-    this.router.navigate(['/main/acc-doc/edit', id]);
+     this.router.navigate(['manage-acc-doc-detail', id]);
   }
   
   delete(id: any) {

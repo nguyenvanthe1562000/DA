@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ShopVT.Controllers.Admin
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class AccDocController : ControllerBase
     {
