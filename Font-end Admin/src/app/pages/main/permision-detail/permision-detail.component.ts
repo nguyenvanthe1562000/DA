@@ -85,7 +85,7 @@ export class PermisionDetailComponent extends BaseComponent implements OnInit {
   //   });
   // }
   delete(id: any) {
-    this._api.delete('/api/PermisionDetail/delete/' + id).takeUntil(this.unsubscribe).subscribe(res => {
+    this._api.delete('/api/Permision/delete/' + id).takeUntil(this.unsubscribe).subscribe(res => {
       alert("Xóa thành công");
       this.search();
 
