@@ -117,52 +117,52 @@ export class ManageProductsComponent extends BaseComponent implements OnInit {
     formData.append("file", file, file.name);
     return this.httpclient.post(apiURL, formData).pipe();
   }
-imgresult:any
+  imgresult: any
   AddNewProduct(form: NgForm) {
     console.log(form.value);
     try {
-      let img:string;
-      this.upload(this.file).subscribe(res => { 
-      let sanpham: SanPham = new SanPham();
-      sanpham.MaSanPham="";
-      sanpham.MaLoai = form.controls['maLoai'].value;
-      sanpham.MaHang = form.controls['maHang'].value;
-      sanpham.TenSanPham = form.controls['tenSanPham'].value;
-      sanpham.XuatXu = form.controls['xuatXu'].value;
-      sanpham.BaoHanh = form.controls['baoHanh'].value;
-      sanpham.MauSac = form.controls['mauSac'].value;
-      sanpham.GiaBan = form.controls['giaBan'].value;
-      sanpham.MoTa = form.controls['moTa'].value;
-      sanpham.GhiChu = form.controls['ghiChu'].value;
-      sanpham.Anh = res.data;
-     
-   
-      
-      this._api.post('/api/sanpham/create-product',sanpham).takeUntil(this.unsubscribe).subscribe(res => {
-        let info: ProductLapTopInformation = new ProductLapTopInformation();
-        info.ProductCode =res.data;
-        info.CPUType = form.value.CPUType;
-        info.GraphicsCardType = form.value.GraphicsCardType;
-        info.AmountRAM = form.value.AmountRAM;
-        info.HardDrive = form.value.HardDrive;
-        info.ScreenSize = form.value.ScreenSize;
-        info.ScreenResolution = form.value.ScreenResolution;
-        info.Communication = form.value.Communication;
-        info.OperatingSystem = form.value.OperatingSystem;
-        info.Size = form.value.Size;
-        info.WIFI = form.value.WIFI;
-        info.Bluetooth = form.value.Bluetooth;
-        info.Weight = form.value.Weight;
-        info.DisplayOrder = 1;
-        this._api.post('/api/ProductLapTopInformation/insert',info).takeUntil(this.unsubscribe).subscribe(res => {
-        }, err => {});
-        this.resetform(form);
-        this.search();
-        this.displayAdd = false;
-      });
+      let img: string;
+      this.upload(this.file).subscribe(res => {
+        let sanpham: SanPham = new SanPham();
+        sanpham.MaSanPham = "";
+        sanpham.MaLoai = form.controls['maLoai'].value;
+        sanpham.MaHang = form.controls['maHang'].value;
+        sanpham.TenSanPham = form.controls['tenSanPham'].value;
+        sanpham.XuatXu = form.controls['xuatXu'].value;
+        sanpham.BaoHanh = form.controls['baoHanh'].value;
+        sanpham.MauSac = form.controls['mauSac'].value;
+        sanpham.GiaBan = form.controls['giaBan'].value;
+        sanpham.MoTa = form.controls['moTa'].value;
+        sanpham.GhiChu = form.controls['ghiChu'].value;
+        sanpham.Anh = res.data;
+
+
+
+        this._api.post('/api/sanpham/create-product', sanpham).takeUntil(this.unsubscribe).subscribe(res => {
+          let info: ProductLapTopInformation = new ProductLapTopInformation();
+          info.ProductCode = res.data;
+          info.CPUType = form.value.CPUType;
+          info.GraphicsCardType = form.value.GraphicsCardType;
+          info.AmountRAM = form.value.AmountRAM;
+          info.HardDrive = form.value.HardDrive;
+          info.ScreenSize = form.value.ScreenSize;
+          info.ScreenResolution = form.value.ScreenResolution;
+          info.Communication = form.value.Communication;
+          info.OperatingSystem = form.value.OperatingSystem;
+          info.Size = form.value.Size;
+          info.WIFI = form.value.WIFI;
+          info.Bluetooth = form.value.Bluetooth;
+          info.Weight = form.value.Weight;
+          info.DisplayOrder = 1;
+          this._api.post('/api/ProductLapTopInformation/insert', info).takeUntil(this.unsubscribe).subscribe(res => {
+          }, err => { });
+          this.resetform(form);
+          this.search();
+          this.displayAdd = false;
+        });
 
       });
-      
+
 
       // product.photosmall=this.file2.name;
       // this._api.addnews(news).subscribe(res=>{
