@@ -1,7 +1,9 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from 'src/app/core/base-component';
+import { AccDoc } from 'src/app/shared/models/AccDoc';
 import { Permision } from 'src/app/shared/models/Permision';
 
 @Component({
@@ -38,7 +40,6 @@ export class AccDocDetailComponent extends BaseComponent implements OnInit {
     else  
     {
       this._api.get(`/api/SanPham/search-name`).takeUntil(this.unsubscribe).subscribe(res => {
-        debugger;
         this.Products = res;          
       });
       this.IsFormAdd = true;
@@ -52,11 +53,10 @@ export class AccDocDetailComponent extends BaseComponent implements OnInit {
    newAttribute: any = {};
 
   addFieldValue() {
-    this.newAttribute.productId = this.product.maSanPham;
+    this.newAttribute.ProducdId = this.product.maSanPham;
     this.newAttribute.quantity ;
       this.fieldArray.push(this.newAttribute)
       this.newAttribute = {};
-      debugger;
   }
 
   deleteFieldValue(index) {
@@ -65,16 +65,35 @@ export class AccDocDetailComponent extends BaseComponent implements OnInit {
   UpdateAmount()
   {
     this.newAttribute.amount = this.newAttribute.quantity * this.newAttribute.unitCost;
-    debugger;
+
   }
   AddAccDoc(form)
   {
     console.log(form.value);
     console.log( JSON.stringify(this.fieldArray));
+    let model:AccDoc = {
+      stt: form.value.stt,
+      Description: form.value.description,
+      listjson: this.fieldArray,
+      DocDate: form.value.docDate,
+    }
+    this._api.post(`/api/AccDoc/insert`,model).takeUntil(this.unsubscribe).subscribe(res => {
+      form.reset();
+      this.fieldArray = [];
+    });
+    
+    console.log(model);
     
   }
+  onChangeSelectProduct()
+  {
+    this.newAttribute.unitCost = this.product.giaBan;
+    this.newAttribute.unit = 'cái';
+  }
+  
   Add(form: NgForm)
   {
+    
     console.log(form.value);
     console.log( JSON.stringify(this.fieldArray));
   }

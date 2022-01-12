@@ -34,6 +34,7 @@ import { ManageReportComponent } from './manage-report/manage-report.component';
 import { ManageAmountComponent } from './manage-amount/manage-amount.component';
 import { AccDocComponent } from './acc-doc/acc-doc.component';
 import { AccDocDetailComponent } from './acc-doc-detail/acc-doc-detail.component';
+import { OpenInventoryComponent } from './open-inventory/open-inventory.component';
 export const mainRoute: Routes = [
   {
     path: '',
@@ -102,6 +103,10 @@ export const mainRoute: Routes = [
         component: AccDocComponent,
       },
       {
+        path: 'manage-open-inventory',
+        component: OpenInventoryComponent,
+      },
+      {
         path: 'manage-acc-doc-detail/:id',
         component: AccDocDetailComponent,
       },
@@ -130,6 +135,6 @@ export const mainRoute: Routes = [
     ChartModule
   ],
   declarations: [MainComponent,    TintucComponent,
-    DashboardComponent, ManageCategoriesComponent, ManageProductsGroupComponent, ManageProductsComponent, ManageUsersComponent, ManageOrdersComponent, ManageProductBrandComponent, DateVNPipe, PermisionComponent, PermisionDetailComponent, ProductInfomationComponent, ManageReportComponent, ManageAmountComponent, AccDocComponent, AccDocDetailComponent]
+    DashboardComponent, ManageCategoriesComponent, ManageProductsGroupComponent, ManageProductsComponent, ManageUsersComponent, ManageOrdersComponent, ManageProductBrandComponent, DateVNPipe, PermisionComponent, PermisionDetailComponent, ProductInfomationComponent, ManageReportComponent, ManageAmountComponent, AccDocComponent, AccDocDetailComponent, OpenInventoryComponent]
 })
 export class MainModule { }

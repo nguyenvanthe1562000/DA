@@ -5,10 +5,8 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label no-padding-right"> Ngày </label>
                 <div class="col-sm-11">
-                    <p-calendar  *ngIf="IsFormAdd" class="form-control" 
-                    name="docDate"  ngModel #docDate="ngModel" 
-                    [dateFormat]="dateFormat" 
-                        [locale]="locale_vn" [showIcon]="true" inputId="icon"></p-calendar>
+                    <p-calendar *ngIf="IsFormAdd" class="form-control" name="docDate" ngModel #docDate="ngModel"
+                        [dateFormat]="dateFormat" [locale]="locale_vn" [showIcon]="true" inputId="icon"></p-calendar>
 
                     <input *ngIf="!IsFormAdd" formControlName="docDate" class="form-control" type="text"
                         value="{{AccDocDetais.docDate}}" [(ngModel)]="AccDocDetais.docDate" />
@@ -18,21 +16,23 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label no-padding-right"> số phiếu </label>
                 <div class="col-sm-11">
-                    <input type="text" class="form-control" name="tenSanPham"  ngModel #tenSanPham="ngModel" placeholder="số phiếu" value="{{AccDocDetais.stt}}"
-                    [(ngModel)]="AccDocDetais.stt">
+                    <input type="text" class="form-control" name="stt" ngModel #stt="ngModel" placeholder="số phiếu"
+                        value="{{AccDocDetais.stt}}" [(ngModel)]="AccDocDetais.stt">
                 </div>
-         
-               
+
+
             </div>
             <div class="form-group">
                 <label class="col-sm-1 control-label no-padding-right"> nội dung </label>
                 <div class="col-sm-11">
-                    <input type="text" class="form-control" name="description"  ngModel #description="ngModel" placeholder="Nội dung" value="{{AccDocDetais.description}}"
-                    [(ngModel)]="AccDocDetais.description">
-                   
+                    <input type="text" class="form-control" name="description" ngModel #description="ngModel"
+                        placeholder="Nội dung" value="{{AccDocDetais.description}}"
+                        [(ngModel)]="AccDocDetais.description">
+
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block"  >
+            
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
                 <i class="mdi mdi-check"></i>
                 Lưu
             </button>
@@ -61,7 +61,7 @@
                 <td>{{item.unit}}</td>
                 <td>{{item.quantity}}</td>
                 <td>{{item.unitCost}}</td>
-                <td>{{item.amount}}</td>
+                <td>{{item.amount|currency:'VND':true}}</td>
                 <td>{{item.note}}</td>
                 <td style="text-align: center;">
                     <button pButton type="button" (click)="delete(item.stt)" title="Xóa" class="p-button-danger"><i
@@ -88,7 +88,7 @@
             <tr *ngFor="let field of fieldArray; let i = index">
                 <td>{{i+1}}</td>
                 <td>
-                    <input [(ngModel)]="field.productId" class="form-control" type="text" name="{{field.productId}}" />
+                    <input [(ngModel)]="field.ProducdId" class="form-control" type="text" name="{{field.ProducdId}}" />
                 </td>
                 <td>
                     <input [(ngModel)]="field.unit" class="form-control" type="text" name="{{field.unit}}" />
@@ -100,8 +100,8 @@
                     <input [(ngModel)]="field.unitCost" class="form-control" type="text" name="{{field.unitCost}}" />
                 </td>
                 <td>
-                    <p>{{field.amount}}</p>
-                  
+                    <p>{{field.amount |currency:'VND':true}}</p>
+
                 </td>
                 <td>
                     <input [(ngModel)]="field.note" class="form-control" type="text" name="{{field.note}}" />
@@ -116,7 +116,9 @@
                 </td>
                 <td>
                     <p-dropdown [options]="Products" [(ngModel)]="product" optionLabel="tenSanPham" [filter]="true"
-                        filterBy="tenSanPham" [showClear]="true" placeholder="Select a Country">
+                        filterBy="tenSanPham" [showClear]="true" placeholder="Select a Country"
+                        (onChange)="onChangeSelectProduct()">
+
                         <ng-template pTemplate="selectedItem">
                             <div class="country-item country-item-value" *ngIf="product">
                                 <div style="width: 150px;">{{product.tenSanPham}}</div>
@@ -128,7 +130,7 @@
                             </div>
                         </ng-template>
                     </p-dropdown>
-                    <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.productId"
+                    <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.ProducdId"
                         name="newAttributeCode" value="abc" hidden />
                 </td>
                 <!-- <td>

@@ -16,6 +16,7 @@ export class BaseComponent {
    public unsubscribe = new Subject();
    public _renderer:any;
    public _api: ApiService;
+   public _url='https://localhost:5001';
    public _route: ActivatedRoute;
    constructor(injector: Injector) {  
       

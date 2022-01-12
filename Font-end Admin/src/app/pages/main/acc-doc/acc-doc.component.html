@@ -1,5 +1,5 @@
 <div class="top">
-    <h2>Phiếu nhập</h2>
+    <h2>Tồn đầu</h2>
     <div class="right">
         <!-- <button class="btnX" pButton type="button" (click)="showAdd()" lable="Thêm"></button> -->
         <p-button (click)="CreateAccDoc()" icon="pi pi-external-link" label="Thêm"></p-button>
@@ -7,28 +7,7 @@
     </div>
 </div>
 <div class="bot">
-    <p-panel header="Tìm kiếm" [style]="{'margin-top': '2px'}">
-        <!-- <form class="form-horizontal" role="form" [formGroup]="formsearch"  (ngSubmit)="search()">
-            <div class="form-group">
-                <label class="col-sm-1 control-label no-padding-right"> Họ tên </label>
-                <div class="col-sm-11">
-                    <input formControlName="hoTen" class="form-control" type="text" placeholder="Họ tên" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label no-padding-right"> Tài khoản </label>
-                <div class="col-sm-11">
-                    <input formControlName="taiKhoan" class="form-control" type="text" placeholder="Tài khoản" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label no-padding-right"></label>
-                <div class="col-sm-11">
-                    <button (click)="search()" class="btn btn-sm btn-primary">Tìm kiếm</button>
-                </div>
-            </div>
-        </form>  -->
-    </p-panel>
+  
     <p-table selectionMode="single" [value]="AccDocs" styleClass="p-datatable-gridlines" [style]="{'margin-top': '2px', 'width': '100%'}" >
         <ng-template pTemplate="header">
             <tr>
