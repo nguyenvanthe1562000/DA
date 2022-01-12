@@ -7,6 +7,7 @@ import { FormBuilder, NgForm } from '@angular/forms';
 import { SanPham } from '../../../shared/models/SanPham';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProductLapTopInformation } from 'src/app/shared/models/ProductLapTopInformation';
 interface Category {
   maLoai: string,
   tenLoai: string
@@ -122,8 +123,8 @@ imgresult:any
     try {
       let img:string;
       this.upload(this.file).subscribe(res => { 
-const sanpham: SanPham = new SanPham();
-sanpham.MaSanPham="";
+      let sanpham: SanPham = new SanPham();
+      sanpham.MaSanPham="";
       sanpham.MaLoai = form.controls['maLoai'].value;
       sanpham.MaHang = form.controls['maHang'].value;
       sanpham.TenSanPham = form.controls['tenSanPham'].value;
@@ -135,8 +136,26 @@ sanpham.MaSanPham="";
       sanpham.GhiChu = form.controls['ghiChu'].value;
       sanpham.Anh = res.data;
      
+   
+      
       this._api.post('/api/sanpham/create-product',sanpham).takeUntil(this.unsubscribe).subscribe(res => {
-        alert("thêm mới thành công");
+        let info: ProductLapTopInformation = new ProductLapTopInformation();
+        info.ProductCode =res.data;
+        info.CPUType = form.value.CPUType;
+        info.GraphicsCardType = form.value.GraphicsCardType;
+        info.AmountRAM = form.value.AmountRAM;
+        info.HardDrive = form.value.HardDrive;
+        info.ScreenSize = form.value.ScreenSize;
+        info.ScreenResolution = form.value.ScreenResolution;
+        info.Communication = form.value.Communication;
+        info.OperatingSystem = form.value.OperatingSystem;
+        info.Size = form.value.Size;
+        info.WIFI = form.value.WIFI;
+        info.Bluetooth = form.value.Bluetooth;
+        info.Weight = form.value.Weight;
+        info.DisplayOrder = 1;
+        this._api.post('/api/ProductLapTopInformation/insert',info).takeUntil(this.unsubscribe).subscribe(res => {
+        }, err => {});
         this.resetform(form);
         this.search();
         this.displayAdd = false;

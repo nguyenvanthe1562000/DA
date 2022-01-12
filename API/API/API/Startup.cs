@@ -150,6 +150,9 @@ namespace QLBanDoGiaDung_API
 
             services.AddTransient<IvOpenInventoryService, vOpenInventoryService>();
             services.AddTransient<IvOpenInventoryRepository, vOpenInventoryRepository>();
+
+            services.AddTransient<IProductLapTopInformationService, ProductLapTopInformationService>();
+            services.AddTransient<IProductLapTopInformationRepository, ProductLapTopInformationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

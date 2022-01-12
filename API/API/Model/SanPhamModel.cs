@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,5 +21,7 @@ namespace Model
           public string ChiTiet { get; set; }
         public string GhiChu { get; set; }
         public string Anh { get; set; }
+
+        public ProductLapTopInformationModel productLapTopInformation { get; set; }
     }
 }
